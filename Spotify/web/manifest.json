@@ -1,11 +1,11 @@
 {
-    "name": "aplicativo2",
-    "short_name": "aplicativo2",
+    "name": "SingleMusic",
+    "short_name": "SingleMusic",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Seu Melhor Aplicativo de Musicas Online",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
