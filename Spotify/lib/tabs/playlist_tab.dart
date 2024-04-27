@@ -23,7 +23,7 @@ class PlaylistTab extends StatelessWidget {
             },
             child: ListTile(
               leading: const Icon(Icons.music_note),
-              title: Text("Música ${index + 1}"),
+              title: Text("Favoritos ${index + 1}"),
               // onTap: () {
               //   // Ação ao clicar em uma música
               // },
