@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 duration: const Duration(milliseconds: 250),
                 width: isOpened ? 200 : 0,
                 height: 30,
-                color: Colors.black,
+                color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
                   child: TextFormField(
