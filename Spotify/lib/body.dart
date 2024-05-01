@@ -31,29 +31,35 @@ class _BodyState extends State<Body> {
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          Container(
+            margin: const EdgeInsets.all(16.0),
             child: Text(
               "Bem-vindo de volta!",
               style: TextStyle(fontSize: 24, color: isDarkMode ? Colors.white : Colors.black),
             ),
           ),
-          buildBody(isDarkMode, widget, 350),
+          buildBody(isDarkMode, widget, 300),
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey,
+        foregroundColor: isDarkMode ? Colors.white : Colors.grey,
+
         onPressed: () {
           setState(() {
             isDarkMode = !isDarkMode;
           });
         },
-        child: const Icon(Icons.brightness_medium),
+        child: Icon(Icons.brightness_medium, color: !isDarkMode ? Colors.black : Colors.white),
       ),
     );
   }
 }
 
 Widget buildBody(isDarkMode, widget, listHeight) {
+
+  const List<String> menuItems = ['Detalhes do Artista', 'Detalhes da Música'];
+
   return Container(
     color: isDarkMode ? Colors.black : Colors.white, 
     child: SingleChildScrollView(
@@ -144,6 +150,29 @@ Widget buildBody(isDarkMode, widget, listHeight) {
                     subtitle: Text(
                       widget.musicas[index].artista.nome,
                       style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
+                    ),
+                    trailing: MenuAnchor(
+                      builder: (BuildContext context, MenuController controller, Widget? child) {
+                        return IconButton(
+                          onPressed: () {
+                            if (controller.isOpen) {
+                              controller.close();
+                            } else {
+                              controller.open();
+                            }
+                          },
+                          icon: Icon(Icons.more_horiz, color: isDarkMode ? Colors.white : Colors.black), 
+                          tooltip: 'Show menu',
+                        );
+                      },
+                      menuChildren: List<MenuItemButton>.generate(
+                        2,
+                        (int index) => MenuItemButton(
+                          onPressed: () {},
+                              //setState(() => selectedMenu = SampleItem.values[index]),
+                          child: Text('${menuItems[index]}'),
+                        ),
+                      ),
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetalhesDaMusicaScreen(musica: widget.musicas[index])));

@@ -1,3 +1,4 @@
+import 'package:Spotify/tabs/playlist_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:Spotify/data/artistas.dart'; // Importe os dados dos artistas
 import 'package:Spotify/data/musica.dart'; // Importe os dados das músicas
@@ -16,12 +17,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController searchController = TextEditingController();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 3, // Número de abas
+        length: 4, // Número de abas
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Spotify",
                   style: TextStyle(
                     color: Colors.green,
@@ -41,15 +41,14 @@ class MyApp extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: () {
-                    _showSearchSheet(context, searchController); // Abre a barra de pesquisa
                   },
                 ),
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 20,
                   backgroundImage: AssetImage('assets/usuario/Luska.jpg'), // Substitua pela imagem de perfil do usuário
                 ),
-                SizedBox(width: 10),
-                Column(
+                const SizedBox(width: 10),
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -78,8 +77,8 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.explore, color: isDarkMode ? Colors.white : Colors.green[600]),
-                      SizedBox(width: 5),
-                      Text(
+                      const SizedBox(width: 5),
+                      const Text(
                         "Explorar",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),
                       ),
@@ -91,8 +90,8 @@ class MyApp extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.star, color: isDarkMode ? Colors.white : Colors.green[600]),
-                      SizedBox(width: 5),
-                      Text(
+                      const SizedBox(width: 5),
+                      const Text(
                         "Favoritos",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),
                       ),
@@ -103,9 +102,22 @@ class MyApp extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Icon(Icons.playlist_add, color: isDarkMode ? Colors.white : Colors.green[600]),
+                      const SizedBox(width: 5),
+                      const Text(
+                        "Álbuns e Playlist",
+                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),
+                      ),
+                    ],
+                  ),
+                ),
+                Tab(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Icon(Icons.dynamic_feed_sharp, color: isDarkMode ? Colors.white : Colors.green[600]),
-                      SizedBox(width: 5),
-                      Text(
+                      const SizedBox(width: 5),
+                      const Text(
                         "Biblioteca",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),
                       ),
@@ -119,7 +131,8 @@ class MyApp extends StatelessWidget {
             children: [
               Body(artistas: artistas, musicas: musicas, favoritos: favoritos, playlist: playlist, listHeight: 400),
               FavoritosTab(favoritos: favoritos),
-              BibliotecaTab(artistas: artistas, musicas: musicas, favoritos: favoritos, playlist: playlist),
+              PlaylistTab(playlist: playlist),
+              BibliotecaTab(artistas: artistas, musicas: musicas, playlist: playlist, favoritos: favoritos,),
             ],
           ),
           // Drawer
@@ -128,9 +141,9 @@ class MyApp extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 DrawerHeader(
-                  child: Column(
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Row(
                         children: [
                           CircleAvatar(
@@ -166,13 +179,13 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  title: Text('Minha Conta'),
+                  title: const Text('Minha Conta'),
                   onTap: () {
                     // Adicione a lógica para a tela "Minha Conta" aqui
                   },
                 ),
                 ListTile(
-                  title: Text('Sobre Nós'),
+                  title: const Text('Sobre Nós'),
                   onTap: () {
                     // Adicione a lógica para a tela "Sobre Nós" aqui
                   },
@@ -182,51 +195,6 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  void _showSearchSheet(BuildContext context, TextEditingController searchController) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Pesquisar',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 20),
-                  TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Digite sua pesquisa...',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Adicione a lógica para pesquisar aqui
-                      String pesquisa = searchController.text;
-                      print('Pesquisa realizada: $pesquisa');
-                      Navigator.pop(context); // Fecha o bottom sheet após a pesquisa
-                    },
-                    child: Text('Pesquisar'),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

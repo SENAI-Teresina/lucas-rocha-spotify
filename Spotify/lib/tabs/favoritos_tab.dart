@@ -32,9 +32,6 @@ class _FavoritosTabState extends State<FavoritosTab> {
                 padding: const EdgeInsets.all(16.0),
                 child: FavoritosRow(context, widget.favoritos, isDarkMode, 10),
               ),
-              const SizedBox(height: 16), // Espaço em branco
-              const SizedBox(height: 16), // Espaço em branco
-              const SizedBox(height: 16), // Espaço em branco
             ],
           ),
         ),
