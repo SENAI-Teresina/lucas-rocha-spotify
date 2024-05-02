@@ -103,6 +103,13 @@ class _DetalhesDaMusicaScreenState extends State<DetalhesDaMusicaScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+            _stop();
+          },
+        ),
         title: const Text("Detalhes da Música"),
         actions: [
           IconButton(
@@ -146,12 +153,14 @@ class _DetalhesDaMusicaScreenState extends State<DetalhesDaMusicaScreen> {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetalhesDoArtistaScreen(artista: widget.musica.artista),
                         ),
                       );
+                      _stop();
                     },
                     child: Text(
                       "Artista: ${widget.musica.artista.nome}",
@@ -263,6 +272,10 @@ class _DetalhesDaMusicaScreenState extends State<DetalhesDaMusicaScreen> {
       ),
     );
   }
+
+ void _stop() {
+   player.stop();
+ }
 
   void _playOrPause() async {
     if (isPlaying) {

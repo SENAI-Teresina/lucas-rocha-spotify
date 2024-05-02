@@ -98,6 +98,7 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
                   children: musicasDoArtista.map((musica) {
                     return GestureDetector(
                       onTap: () {
+                        Navigator.pop(context);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
