@@ -76,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Nome do Usuário',
+                          'Luska Biel',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 12,
