@@ -1,6 +1,7 @@
 // ignore_for_file: use_super_parameters, unused_import
 
 import 'package:Spotify/body.dart';
+import 'package:Spotify/main.dart';
 import 'package:Spotify/tabs/favoritos_tab.dart';
 import 'package:flutter/material.dart';
 import '../data/musica.dart';
@@ -25,7 +26,6 @@ class BibliotecaTab extends StatefulWidget {
 }
 
 class _BibliotecaTabState extends State<BibliotecaTab> {
-  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -156,13 +156,16 @@ class _BibliotecaTabState extends State<BibliotecaTab> {
       //     ),
       //   ),
       // ),
-      floatingActionButton: FloatingActionButton(
+     floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey,
+        foregroundColor: isDarkMode ? Colors.white : Colors.grey,
+
         onPressed: () {
           setState(() {
             isDarkMode = !isDarkMode;
           });
         },
-        child: const Icon(Icons.brightness_medium),
+        child: Icon(Icons.brightness_medium, color: !isDarkMode ? Colors.black : Colors.white),
       ),
     );
   }

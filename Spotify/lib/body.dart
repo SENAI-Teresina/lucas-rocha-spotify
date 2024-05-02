@@ -1,6 +1,7 @@
 import 'package:Spotify/data/playlist.dart';
 import 'package:Spotify/detalhes/detalhes_da_musica.dart';
 import 'package:Spotify/detalhes/detalhes_do_artista.dart';
+import 'package:Spotify/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../data/artistas.dart';
@@ -21,9 +22,10 @@ class Body extends StatefulWidget {
   _BodyState createState() => _BodyState();
 }
 
-bool isDarkMode = false;
 
 class _BodyState extends State<Body> {
+
+  
 
   @override
   Widget build(BuildContext context) {

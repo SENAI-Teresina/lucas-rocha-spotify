@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:Spotify/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,7 +21,6 @@ class DetalhesDaMusicaScreen extends StatefulWidget {
 
 class _DetalhesDaMusicaScreenState extends State<DetalhesDaMusicaScreen> {
   late AudioPlayer player;
-  bool isDarkMode = false;
   bool isLooping = false;
   bool isMuted = false;
   Duration? currentPlaybackPosition;

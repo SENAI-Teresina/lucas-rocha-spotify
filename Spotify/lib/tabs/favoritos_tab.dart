@@ -1,6 +1,8 @@
 // ignore_for_file: use_super_parameters, library_private_types_in_public_api, non_constant_identifier_names
 
+import 'package:Spotify/data/musica.dart';
 import 'package:Spotify/detalhes/detalhes_do_artista.dart';
+import 'package:Spotify/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../data/favoritos.dart'; // Importe os dados dos favoritos
@@ -8,15 +10,15 @@ import 'favoritos_tab.dart'; // Importe os dados dos favoritos
 
 class FavoritosTab extends StatefulWidget {
   final List<Favorito> favoritos;
+  final List<Musica> musica;
 
-  const FavoritosTab({Key? key, required this.favoritos}) : super(key: key);
+  const FavoritosTab({Key? key, required this.favoritos, required this.musica}) : super(key: key);
 
   @override
   _FavoritosTabState createState() => _FavoritosTabState();
 }
 
 class _FavoritosTabState extends State<FavoritosTab> {
-  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +38,16 @@ class _FavoritosTabState extends State<FavoritosTab> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey,
+        foregroundColor: isDarkMode ? Colors.white : Colors.grey,
+
         onPressed: () {
           setState(() {
             isDarkMode = !isDarkMode;
           });
         },
-        child: const Icon(Icons.brightness_medium),
+        child: Icon(Icons.brightness_medium, color: !isDarkMode ? Colors.black : Colors.white),
       ),
     );
   }
