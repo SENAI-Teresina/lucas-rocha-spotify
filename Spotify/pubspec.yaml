@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.2.0
   uni_links: 0.5.1
   http: ^0.13.6
+  
 
 
 dev_dependencies:
@@ -64,3 +65,4 @@ flutter:
     - assets/musicas/
     - assets/album/
     - assets/usuario/
+    - assets/letramusica/

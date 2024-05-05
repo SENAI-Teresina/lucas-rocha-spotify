@@ -5,17 +5,21 @@ import 'package:flutter/material.dart';
 import '../data/artistas.dart';
 import '../detalhes/detalhes_da_musica.dart';
 import '../data/album.dart';
+
 class Musica {
   final String titulo;
   final Artista artista;
   final String capaUrl;
   final String mp3Url; // Alterado para String
+  //final String letraDaMusica; // Alterado para String
+
 
   Musica({
     required this.titulo,
     required this.artista,
     required this.capaUrl,
     required this.mp3Url,
+    // required this.letraDaMusica,
   });
 }
 
@@ -25,10 +29,11 @@ List<Musica> musicas = [
     artista: artistas[0],
     capaUrl: "assets/capa/eu.jpg",
     mp3Url: "assets/musicas/eu.MP3", 
+
   ),
   Musica(
     titulo: "Só pra você lembrar",
-    artista: artistas[1],
+    artista: artistas[0],
     capaUrl: "assets/capa/sopra.jpg",
     mp3Url: "assets/musicas/sopra.MP3", // Convertido para String
   ),

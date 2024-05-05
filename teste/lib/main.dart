@@ -92,13 +92,18 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _pauseMusic() {
-    _audioPlayer.pause();
+  void _pauseMusic() async {
+  await _audioPlayer.pause();
+  setState(() {
+    _isPlaying = false;
+  });
+  _audioPlayer.onDurationChanged.listen((duration) {
     setState(() {
-      _isPlaying = false;
-      _currentPosition = _audioPlayer.position;
+      _currentPosition = duration;
     });
-  }
+  });
+}
+
 
   void _nextTrack() {
     if (_currentTrackIndex < _trackUrls.length - 1) {
