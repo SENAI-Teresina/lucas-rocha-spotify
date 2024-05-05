@@ -9,12 +9,18 @@ class Playlist {
 }
 
 List<Playlist> playlists = [
-  Playlist(titulo: 'Eu', capaUrl: 'assets/capa/eu.jpg', musicas: [
+  Playlist(titulo: 'P1', capaUrl: 'assets/capa/eu.jpg', musicas: [
+    musicas[0],
+  ]),
+  Playlist(titulo: 'P2', capaUrl: 'assets/capa/eu.jpg', musicas: [
     musicas[0],
     musicas[1],
     musicas[2],
     musicas[14],
-  ])
+  ]),
+  Playlist(titulo: 'P3', capaUrl: 'assets/capa/eu.jpg', musicas: [
+    musicas[5],
+  ]),
 ];
 
 // import 'package:just_audio/just_audio.dart';

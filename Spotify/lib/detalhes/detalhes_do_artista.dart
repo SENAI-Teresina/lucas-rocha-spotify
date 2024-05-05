@@ -1,4 +1,5 @@
 import 'package:Spotify/data/playlist.dart';
+import 'package:Spotify/detalhes/detalhes_da_playlist.dart';
 import 'package:Spotify/main.dart';
 import 'package:flutter/material.dart';
 import '../data/artistas.dart';
@@ -20,8 +21,11 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
   Widget build(BuildContext context) {
     List<Musica> musicasDoArtista = musicas.where((musica) => musica.artista == widget.artista).toList();
 
-    List<Playlist> playlistDoArtista = playlists.where((playlist, Musica)=> playlist.musicas.where((musica) => musica.artista == widget.artista).toList();
-    ).toList();
+    
+    List<Playlist> playlistComArtista = playlists.where((playlist) {
+     return playlist.musicas.where((musica) => musica.artista == widget.artista).toList().isNotEmpty;
+    }).toList();
+    print(playlistComArtista);
 
     return Scaffold(
       appBar: AppBar(
@@ -99,39 +103,39 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: musicasDoArtista.map((musica) {
+                  children: playlistComArtista.map((playlist) {
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetalhesDaMusicaScreen(musica: musica),
+                            builder: (context) => DetalhesDaPlaylistScreen(playlist: playlist),
                           ),
                         );
                       },
                       child: Column(
                         children: [
                           const SizedBox(width: 20),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: isDarkMode ? Colors.grey[800]! : Colors.grey[200]!,
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                musica.capaUrl,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+                          // Container(
+                          //   width: 100,
+                          //   height: 100,
+                          //   decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(10),
+                          //     color: isDarkMode ? Colors.grey[800]! : Colors.grey[200]!,
+                          //   ),
+                          //   child: ClipRRect(
+                          //     borderRadius: BorderRadius.circular(10),
+                          //     child: Image.asset(
+                          //       musica.capaUrl,
+                          //       fit: BoxFit.cover,
+                          //     ),
+                          //   ),
+                          // ),
                           const SizedBox(height: 10),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              musica.titulo,
+                              playlist.titulo,
                               style: TextStyle(fontSize: 16, color: isDarkMode ? Colors.white : Colors.black, decoration: TextDecoration.underline),
                               textAlign: TextAlign.center,
                             ),
