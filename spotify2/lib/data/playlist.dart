@@ -1,4 +1,4 @@
-import 'package:Spotify/data/musica.dart';
+import 'package:spotify2/data/musica.dart';
 
 class Playlist {
   final String titulo;

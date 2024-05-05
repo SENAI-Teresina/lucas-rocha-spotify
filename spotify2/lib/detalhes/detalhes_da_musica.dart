@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:Spotify/main.dart';
+import 'package:spotify2/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -2,16 +2,18 @@ import 'package:Spotify/data/musica.dart';
 
 class Playlist {
   final String titulo;
-  final String artista;
   final String capaUrl;
   final List<Musica> musicas;
 
-  Playlist({required this.titulo, required this.artista, required this.capaUrl, required this.musicas});
+  Playlist({required this.titulo, required this.capaUrl, required this.musicas});
 }
 
-List<Playlist> playlist = [
-  Playlist(titulo: 'nome', artista: 'Felipe Amorim', capaUrl: 'assets/capa/eu.jpg', musicas: [
-    musicas[0]
+List<Playlist> playlists = [
+  Playlist(titulo: 'Eu', capaUrl: 'assets/capa/eu.jpg', musicas: [
+    musicas[0],
+    musicas[1],
+    musicas[2],
+    musicas[14],
   ])
 ];
 

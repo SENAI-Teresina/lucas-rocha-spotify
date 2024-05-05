@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import
 
-import 'package:Spotify/data/artistas.dart';
+import 'package:spotify2/data/artistas.dart';
 import 'package:flutter/material.dart';
 
 class Favorito {

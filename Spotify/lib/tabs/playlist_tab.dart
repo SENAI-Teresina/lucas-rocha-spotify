@@ -1,4 +1,5 @@
 import 'package:Spotify/data/playlist.dart';
+import 'package:Spotify/detalhes/detalhes_da_playlist.dart';
 import 'package:Spotify/main.dart';
 import 'package:flutter/material.dart';
 import 'detalhes_aba.dart';
@@ -17,22 +18,15 @@ class PlaylistTab extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        itemCount: 4,
+        itemCount: playlists.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
+          Playlist myplaylist = playlists[index];
+          return ListTile(
+            leading: const Icon(Icons.music_note),
+            title: Text(myplaylist.titulo),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const DetalhesAba()),
-              );
-            },
-            child: ListTile(
-              leading: const Icon(Icons.music_note),
-              title: Text("Favoritos ${index + 1}"),
-              onTap: () {
-                  
-              } ,
-            ),  
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetalhesDaPlaylistScreen(playlist: myplaylist)));
+            } ,
           );
         },
       ),

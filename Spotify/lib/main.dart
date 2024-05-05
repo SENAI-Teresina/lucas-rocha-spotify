@@ -153,10 +153,10 @@ class _MyAppState extends State<MyApp> {
               ),
               body: TabBarView(
                 children: [
-                  Body(artistas: artistas, musicas: musicas, favoritos: favoritos, playlist: playlist, listHeight: 400),
+                  Body(artistas: artistas, musicas: musicas, favoritos: favoritos, playlist: playlists, listHeight: 400),
                   FavoritosTab(favoritos: favoritos, musica: musicas,),
-                  PlaylistTab(playlist: playlist),
-                  BibliotecaTab(artistas: artistas, musicas: musicas, playlist: playlist, favoritos: favoritos,),
+                  PlaylistTab(playlist: playlists),
+                  BibliotecaTab(artistas: artistas, musicas: musicas, playlist: playlists, favoritos: favoritos,),
                 ],
               ),
               endDrawer: Drawer(

@@ -1,8 +1,9 @@
+import 'package:Spotify/data/playlist.dart';
 import 'package:Spotify/main.dart';
 import 'package:flutter/material.dart';
 import '../data/artistas.dart';
-import '../data/musica.dart'; 
-import 'detalhes_da_musica.dart'; 
+import '../data/musica.dart';
+import '../detalhes/detalhes_da_musica.dart'; 
 
 class DetalhesDoArtistaScreen extends StatefulWidget {
   final Artista artista;
@@ -18,6 +19,9 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
   @override
   Widget build(BuildContext context) {
     List<Musica> musicasDoArtista = musicas.where((musica) => musica.artista == widget.artista).toList();
+
+    List<Playlist> playlistDoArtista = playlists.where((playlist, Musica)=> playlist.musicas.where((musica) => musica.artista == widget.artista).toList();
+    ).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -88,7 +92,7 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
               ),
               const SizedBox(height: 20),
               Text(
-                "Músicas:",
+                "Álbuns e Playlist:",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isDarkMode ? Colors.white : Colors.black),
               ),
               const SizedBox(height: 10),
@@ -98,7 +102,6 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
                   children: musicasDoArtista.map((musica) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -110,8 +113,8 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
                         children: [
                           const SizedBox(width: 20),
                           Container(
-                            width: 150,
-                            height: 150,
+                            width: 100,
+                            height: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: isDarkMode ? Colors.grey[800]! : Colors.grey[200]!,
@@ -141,55 +144,58 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
               ),
               const SizedBox(height: 20),
               Text(
-                "Álbuns e Playlist:",
+                "Músicas:",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isDarkMode ? Colors.white : Colors.black),
               ),
               const SizedBox(height: 10),
-              ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: musicasDoArtista.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final musica = musicasDoArtista[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetalhesDaMusicaScreen(musica: musica),
+              Container(
+                height: 125,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: musicasDoArtista.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final musica = musicasDoArtista[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetalhesDaMusicaScreen(musica: musica),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 150,
+                        margin: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: isDarkMode ? Colors.grey[800]! : Colors.grey[200]!,
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: 150,
-                      margin: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: isDarkMode ? Colors.grey[800]! : Colors.grey[200]!,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              musica.capaUrl,
-                              width: 150,
-                              height: 150,
-                              fit: BoxFit.cover,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset(
+                                musica.capaUrl,
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            musica.titulo,
-                            style: TextStyle(fontSize: 16, color: isDarkMode ? Colors.white : Colors.black, decoration: TextDecoration.underline),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                            SizedBox(height: 10),
+                            Text(
+                              musica.titulo,
+                              style: TextStyle(fontSize: 16, color: isDarkMode ? Colors.white : Colors.black, decoration: TextDecoration.underline),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
 
             ],
