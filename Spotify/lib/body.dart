@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
 }
 
 Widget buildBody(isDarkMode, widget, listHeight) {
-  const List<String> menuItems = ['Detalhes do Artista', 'Detalhes da Música'];
+  const List<String> menuItems = ['Detalhes do Artista', 'Detalhes da Música', 'Adicionar à Playlist'];
 
   return Container(
     color: isDarkMode ? Colors.black : Colors.white,
@@ -203,6 +203,9 @@ Widget buildBody(isDarkMode, widget, listHeight) {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
                                     DetalhesDaMusicaScreen(musica: widget.musicas[index])));
+                            break;
+                          case 'Adicionar à Playlist':
+                            
                             break;
                         }
                       },

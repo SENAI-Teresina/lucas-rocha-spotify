@@ -2,7 +2,7 @@ import 'package:Spotify/data/playlist.dart';
 import 'package:Spotify/detalhes/detalhes_da_playlist.dart';
 import 'package:Spotify/main.dart';
 import 'package:flutter/material.dart';
-import 'detalhes_aba.dart';
+import '../tabs/detalhes_aba.dart';
 
 class PlaylistTab extends StatelessWidget {
   const PlaylistTab({super.key, required List<Playlist> playlist});
@@ -12,23 +12,30 @@ class PlaylistTab extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        title: Text(
-          "Playlist",
-          style: TextStyle(fontSize: 24, color: isDarkMode ? Colors.white : Colors.black),
-        ),
+        // title: Text(
+        //   "Playlist",
+        //   style: TextStyle(fontSize: 24, color: isDarkMode ? Colors.white : Colors.black),
+        // ),
       ),
-      body: ListView.builder(
-        itemCount: playlists.length,
-        itemBuilder: (context, index) {
-          Playlist myplaylist = playlists[index];
-          return ListTile(
-            leading: Icon(Icons.music_note, color: isDarkMode ? Colors.white : Colors.black),
-            title: Text(myplaylist.titulo),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetalhesDaPlaylistScreen(playlist: myplaylist)));
-            } ,
-          );
-        },
+      body: Column(
+        children: [
+          SizedBox(
+
+            child: ListView.builder(
+              itemCount: playlists.length,
+              itemBuilder: (context, index) {
+                Playlist myplaylist = playlists[index];
+                return ListTile(
+                  leading: Icon(Icons.music_note, color: isDarkMode ? Colors.white : Colors.black),
+                  title: Text(myplaylist.titulo),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetalhesDaPlaylistScreen(playlist: myplaylist)));
+                  } ,
+                );
+              },
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.grey,
