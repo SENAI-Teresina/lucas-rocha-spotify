@@ -42,7 +42,7 @@ List<Artista> artistas = [
   ),
   Artista(
   nome: "Tarcisio do Acordeon",
-  imagemUrl: "assets/images/Tarcisio do Acordeon.jpg",
+  imagemUrl: "assets/images/tarcisio.jpeg",
   descricao: "Tarcisio do Acordeon é um talentoso músico brasileiro que se destacou no cenário do forró contemporâneo.\n\n"
     "Com sua habilidade excepcional no acordeon e sua voz marcante, ele conquistou uma legião de fãs por todo o país.",
   curiosidade: "Virtuosismo Musical: Tarcisio é reconhecido por sua habilidade técnica no acordeon, impressionando o público com sua destreza e expressividade.\n\n"

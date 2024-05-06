@@ -1,5 +1,6 @@
 import 'package:Spotify/data/musica.dart';
 import 'package:Spotify/data/playlist.dart';
+import 'package:Spotify/main.dart';
 import 'package:flutter/material.dart';
 
 class DetalhesDaPlaylistScreen extends StatelessWidget {
@@ -17,22 +18,23 @@ class DetalhesDaPlaylistScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Icon(
+             Icon(
               Icons.library_music,
               size: 100,
-              color: Colors.green,
+              color: isDarkMode ? Colors.white : Colors.black,
             ),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 playlist.titulo,
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style:  TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: isDarkMode ? Colors.white : Colors.black),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Músicas"),
+              child: Text("Músicas",
+              style: TextStyle(color: isDarkMode ? Colors.white : Colors.black,),),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -46,8 +48,10 @@ class DetalhesDaPlaylistScreen extends StatelessWidget {
                           radius: 40,
                           backgroundImage: AssetImage(mymusica.capaUrl),
                         ),
-                    title: Text(mymusica.titulo),
-                    subtitle: Text(mymusica.artista.nome),
+                    title: Text(mymusica.titulo,
+                    style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),),
+                    subtitle: Text(mymusica.artista.nome,  
+                    style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),),
                   );
                 } 
               ),
@@ -55,6 +59,7 @@ class DetalhesDaPlaylistScreen extends StatelessWidget {
           ],
         ),
       ),
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
     );
   }
 }

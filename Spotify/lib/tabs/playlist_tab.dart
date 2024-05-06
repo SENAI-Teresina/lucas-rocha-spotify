@@ -22,7 +22,7 @@ class PlaylistTab extends StatelessWidget {
         itemBuilder: (context, index) {
           Playlist myplaylist = playlists[index];
           return ListTile(
-            leading: const Icon(Icons.music_note),
+            leading: Icon(Icons.music_note, color: isDarkMode ? Colors.white : Colors.black),
             title: Text(myplaylist.titulo),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetalhesDaPlaylistScreen(playlist: myplaylist)));
@@ -39,6 +39,7 @@ class PlaylistTab extends StatelessWidget {
         },
         child: Icon(Icons.brightness_medium, color: !isDarkMode ? Colors.black : Colors.white),
       ),
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
     );
   }
 }
