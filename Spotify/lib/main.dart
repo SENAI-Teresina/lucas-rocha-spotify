@@ -54,10 +54,10 @@ class _MyAppState extends State<MyApp> {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
+                     Text(
                       "Spotify",
                       style: TextStyle(
-                        color: Colors.green,
+                        color: isDarkMode ? Colors.white : Colors.green,
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
                       ),

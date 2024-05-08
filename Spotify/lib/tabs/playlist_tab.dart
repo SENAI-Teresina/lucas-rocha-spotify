@@ -1,7 +1,10 @@
+import 'dart:js';
+
 import 'package:Spotify/data/playlist.dart';
 import 'package:Spotify/detalhes/detalhes_da_playlist.dart';
 import 'package:Spotify/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../tabs/detalhes_aba.dart';
 
 class PlaylistTab extends StatelessWidget {
@@ -9,18 +12,23 @@ class PlaylistTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final double maxHeight = MediaQuery.of(context).size.height;
+    double margin = MediaQuery.of(context).size.height*0.002;
+    double title = MediaQuery.of(context).size.height*0.035;
+    double listSize = (MediaQuery.of(context).size.height/2)-4*margin-title;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        // title: Text(
-        //   "Playlist",
-        //   style: TextStyle(fontSize: 24, color: isDarkMode ? Colors.white : Colors.black),
-        // ),
-      ),
       body: Column(
         children: [
-          SizedBox(
-
+          Padding(
+            padding: EdgeInsets.only(bottom: margin),
+            child: Text('Playlist', style: TextStyle(color: isDarkMode? Colors.white: Colors.black, fontSize: title),),
+          ),
+          Container(
+            margin: EdgeInsets.only(bottom: margin),
+            height: listSize,
+            color: Colors.redAccent,
             child: ListView.builder(
               itemCount: playlists.length,
               itemBuilder: (context, index) {
