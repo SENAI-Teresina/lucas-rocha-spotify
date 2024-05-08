@@ -36,14 +36,14 @@ List<Musica> musicas = [
     artista: artistas[0],
     capaUrl: "assets/capa/sopra.jpg",
     mp3Url: "assets/musicas/sopra.MP3",
-    letraDaMusica: "assets/musicas/sopra.mp4",// Convertido para String
+    letraDaMusica: "assets/letramusica/sopra.mp4",// Convertido para String
   ),
   Musica(
     titulo: "Meu Sonho",
     artista: artistas[2],
     capaUrl: "assets/capa/meusonho.jpg",
     mp3Url: "assets/musicas/meu_sonho.mp3",
-    letraDaMusica: "assets/musicas/sopra.MP4",  // Convertido para String
+    letraDaMusica: "assets/letramusica/sopra.MP4",  // Convertido para String
   ),
   Musica(
     titulo: "Pássaro Noturno",
