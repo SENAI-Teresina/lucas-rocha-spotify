@@ -165,7 +165,7 @@ class _DetalhesDoArtistaScreenState extends State<DetalhesDoArtistaScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetalhesDaMusicaScreen(musica: musica),
+                            builder: (context) => DetalhesDaMusicaScreen(musica: musica,),
                           ),
                         );
                       },
